@@ -1,0 +1,11 @@
+---
+echo: true
+keep-md: true
+---
+
+```{python}
+print("Hello, world: %s" % (1 + 3))
+```
+
+a [bad link](htp://ohno).
+

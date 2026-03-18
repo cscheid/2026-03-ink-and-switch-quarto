@@ -1,0 +1,28 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+.reveal div.sourceCode {
+  border: 0;
+}
+
+.flex-diagram {
+  flex: 1; 
+  border-radius: 1rem;
+  padding: .5rem 1rem;
+}
+
+.flex-diagram code {
+  color: inherit;
+}
+
+.reveal div.flex-diagram pre, .reveal div.flex-diagram pre code {
+  background-color: rgba(0,0,0,0);
+}
+
+.reveal div.ast-1 pre, .reveal div.ast-1 pre code {
+  background-color: #fcc;
+}
+
+.reveal div.ast-2 pre, .reveal div.ast-2 pre code {
+  background-color: #aff;
+}
