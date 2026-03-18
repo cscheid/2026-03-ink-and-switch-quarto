@@ -1,3 +1,85 @@
+
+color:
+  palette:
+    # Posit Primary Colors
+    blue: "#447099"
+    orange: "#ee6331"
+    gray: "#404041"
+    # Posit Secondary Colors
+    teal: "#419599"
+    green: "#729943"
+    white: "#f2f2f2"
+    yellow: "#e7b10a"
+    burgundy: "#9a4665"
+    red: "#d44000"
+    # Posit blues
+    light-blue-1: "#d1dbe5"
+    light-blue-2: "#a2b8cb"
+    light-blue-3: "#7494b1"
+    dark-blue-1: "#305775"
+    dark-blue-2: "#213d4f"
+    dark-blue-3: "#17212b"
+    # Posit grays
+    light-gray-1: "#c2c2c4"
+    light-gray-2: "#949494"
+    light-gray-3: "#707073"
+    dark-gray-1: "#333333"
+    dark-gray-2: "#242426"
+    dark-gray-3: "#151515"
+    # Posit teals
+    light-teal-1: "#c2d9d9"
+    light-teal-2: "#94bdbf"
+    light-teal-3: "#70a3a6"
+    dark-teal-1: "#297075"
+    dark-teal-2: "#1f4f4f"
+    dark-teal-3: "#122b2b"
+    # Posit greens
+    light-green-1: "#cfd9c7"
+    light-green-2: "#adbf99"
+    light-green-3: "#8aa67a"
+    dark-green-1: "#57733d"
+    dark-green-2: "#3b4f29"
+    dark-green-3: "#212b1c"
+    # Posit reds
+    light-red-1: "#f2c2c2"
+    light-red-2: "#e59494"
+    light-red-3: "#d66f6f"
+    dark-red-1: "#a63d3d"
+    dark-red-2: "#7a2b2b"
+    dark-red-3: "#4f1919"
+    # Posit burgundies
+    light-burgundy-1: "#d9c4cc"
+    light-burgundy-2: "#bf96a3"
+    light-burgundy-3: "#a67380"
+    dark-burgundy-1: "#78384f"
+    dark-burgundy-2: "#542938"
+    dark-burgundy-3: "#2e171f"
+    # Posit oranges
+    light-orange-1: "#edccbf"
+    light-orange-2: "#eba38c"
+    light-orange-3: "#e58066"
+    dark-orange-1: "#ab4d26"
+    dark-orange-2: "#80361c"
+    dark-orange-3: "#451f12"
+    # Posit yellows
+    light-yellow-1: "#efdeb9"
+    light-yellow-2: "#f5d487"
+    light-yellow-3: "#f4c540"
+    dark-yellow-1: "#c48f0a"
+    dark-yellow-2: "#9b6c04"
+    dark-yellow-3: "#6d4a03"
+  foreground: 
+    light: dark-blue-1
+    dark: white
+  background: 
+    light: white
+    dark: dark-blue-3
+  primary: blue
+  secondary: gray
+  info: teal
+  success: green
+  warning: orange
+  danger: burgundy
 typography:
   fonts:
     - family: Open Sans
@@ -5,23 +87,15 @@ typography:
     - family: Source Code Pro
       source: google
   base: Open Sans
+  headings:
+    weight: 300
+  link:
+    decoration: underline
+    color: 
+      light: blue
+      dark: light-blue-2
   monospace: Source Code Pro
-color:
-  palette:
-    blue: "#447099"
-    orange: "#ee6331"
-    teal: "#419599"
-    green: "#729943"
-    burgundy: "#9a4665"
-    purple: burgundy
-    gray: "#404041"
-    black: "#151515"
-    white: "#FFFFFF"
-  foreground: black
-  background: white
-  primary: blue
-  secondary: gray
-  info: teal
-  success: green
-  warning: orange
-  danger: burgundy
+  monospace-block:
+    background-color:
+      light: light-blue-1
+      dark: dark-blue-2

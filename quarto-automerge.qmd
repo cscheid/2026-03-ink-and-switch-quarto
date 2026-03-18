@@ -1,8 +1,10 @@
 ---
-format: revealjs
+format: 
+  revealjs:
+    footer: '<https://cscheid.net/to/2026-03-quarto-automerge.html>'
 title: "Workshop: Q&A on Q+A"
+subtitle: 'follow along at <https://cscheid.net/to/2026-03-quarto-automerge.html>'
 author: Carlos Scheidegger, Elliot Evans
-affiliation: Quarto team at Posit
 theme: 
   - brand
   - theme.scss
@@ -80,7 +82,7 @@ plot(sin,
 ## Discl\{aimer, osure\}s
 
 - Quarto Hub is in very active development, everything about it might change
-- See it live at <https://cscheid.net/static/quarto-hub> 
+- See it live at <https://cscheid.net/static/quarto-hub/> 
   - github: [`quarto-dev/q2`](https://github.com/quarto-dev/q2)
   - don't use it for anything important, please!
 
@@ -127,35 +129,35 @@ Why more than one Automerge document?
 
 - This is where you might be thinking "uhhh, what?"
 - Pandoc understands rich text, and so does Automerge, so why not represent that directly?
-    - (If you know where to search, you'll find a quarto Automerge experiment based around peritext from a long time ago!)
+    - (If you know where to search, you'll find a Quarto Automerge experiment based around `peritext` from a long time ago!)
 
 <!-- spans, we've seen / messed around with peritext, etc. -->
 
 ## Quarto's rendering pipeline
 
-::: {style="display: flex; gap: 1rem"}
+::: flex
 
-::: {.flex-diagram style="background: rgb(197, 176, 176)"}
+::: {style="background: rgb(197, 176, 176)"}
 `.qmd`
 :::
 
 →
 
-::: {.flex-diagram style="background: rgb(220, 177, 97)"}
+::: {style="background: rgb(220, 177, 97)"}
 AST
 :::
 
 →
 
-::: {.flex-diagram style="background: rgb(169, 213, 183)"}
+::: {style="background: rgb(169, 213, 183)"}
 HTML
 :::
 
 :::
 
-::: {style="display: flex; gap: 1rem; padding-top: .1em"}
+::: flex
 
-::: {.flex-diagram style="background: rgb(197, 176, 176)"}
+::: {style="background: rgb(197, 176, 176)"}
 
 ::: {style="font-size: .8em"}
 ```
@@ -169,7 +171,7 @@ HTML
 
 →
 
-::: {.flex-diagram style="background: rgb(220, 177, 97)"}
+::: {style="background: rgb(220, 177, 97)"}
 
 ::: {style="font-size: .7em"}
 ```
@@ -184,7 +186,7 @@ HTML
 
 →
 
-::: {.flex-diagram style="background: rgb(169, 213, 183)"}
+::: {style="background: rgb(169, 213, 183)"}
 
 ::: {style="font-size: .8em"}
 ```
@@ -199,17 +201,15 @@ HTML
 
 :::
 
-
-
 <!-- consider showing an AST before proceeding somehow,
 or overview of quarto pipeline-->
 
 ## The essential tension
 
-- some players in the session will use rich text
-- some players in the session will use plain text
+- **rich text**: some players in the session will use it
+- **plain text**: some players in the session will use it
 
-**something, somewhere must manage a bidi translation between text and AST**
+something, somewhere must manage a **bidirectional mapping between text and AST**
 
 <!-- No asts at rest -->
 
@@ -217,9 +217,9 @@ or overview of quarto pipeline-->
 
 - Rust rewrite (WASM)
 - take over entire md→output pipeline
-- new ideas:
-  - track source locations and spans throughout
-  - embrace incremental writes
+- two new ideas:
+  - we can track source spans through the entire translation pipeline
+  - tree diffing is efficient: embrace incremental writes
 
 ## Case study: Quarto execution engines
 
@@ -233,9 +233,9 @@ or overview of quarto pipeline-->
 Imagine we want to walk to AST to find bad URLs in links.
 How should we report the error if the parser sees the engine Markdown?
 
-::: {style="display: flex; gap: 1rem"}
+::: flex
 
-::: {.flex-diagram style="background: rgb(197, 176, 176)"}
+::: {.flex style="background: rgb(197, 176, 176)"}
 
 ::: {style="font-size: .5em"}
 ````
@@ -251,7 +251,7 @@ a [bad link](htp://ohno).
 
 →
 
-::: {.flex-diagram style="background: rgb(220, 177, 97)"}
+::: {.flex style="background: rgb(220, 177, 97)"}
 
 ::: {style="font-size: .5em"}
 ````
@@ -275,7 +275,7 @@ a [bad link](htp://ohno).
 
 →
 
-::: {.flex-diagram style="background: rgb(169, 213, 183)"}
+::: {.flex style="background: rgb(169, 213, 183)"}
 
 ::: {style="font-size: .5em"}
 ```
@@ -301,9 +301,9 @@ ast = reconcile(ast, parse_with_locations(engine_output))
 
 ## Tree reconciliation (2/2)
 
-::: {style="display: flex; gap: 1rem"}
+::: flex
 
-::: {.flex-diagram .ast-1}
+::: ast-1
 ````
 ```python
 print("Hello, world")
@@ -313,7 +313,7 @@ a [bad link](htp://ohno).
 ````
 :::
 
-::: {.flex-diagram .ast-2}
+::: ast-2
 ````
 ```
 Hello, world
@@ -327,7 +327,7 @@ a [bad link](htp://ohno).
 
 Reconciled output:
 
-::: {.ast-2}
+::: ast-2
 ````
 ```
 Hello, world
@@ -335,7 +335,7 @@ Hello, world
 ````
 :::
 
-::: {.ast-1}
+::: ast-1
 ```
 a [bad link](htp://ohno).
 ```
@@ -402,27 +402,27 @@ we want you to build on top of this:
 
 ## The future Q+A ecosystem
 
-::: {style="display: flex; gap: 1rem"}
+::: flex
 
-::: {.flex-diagram style="background-color: #c88"}
+::: {style="background-color: #c88"}
 Automerge
 :::
 
 ↔
 
-::: {.flex-diagram style="background-color: #c88"}
+::: {style="background-color: #c88"}
 Qmd
 :::
 
 ↔
 
-::: {.flex-diagram style="background-color: #c88"}
+::: {style="background-color: #c88"}
 AST
 :::
 
 ↔
 
-::: {.flex-diagram style="background-color: #c88"}
+::: {style="background-color: #c88"}
 Bidi
 :::
 

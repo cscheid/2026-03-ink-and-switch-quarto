@@ -5,17 +5,22 @@
   border: 0;
 }
 
-.flex-diagram {
+div.flex {
+  display: flex;
+  gap: 1em;
+}
+
+div.flex > div {
   flex: 1; 
   border-radius: 1rem;
   padding: .5rem 1rem;
 }
 
-.flex-diagram code {
+.flex code {
   color: inherit;
 }
 
-.reveal div.flex-diagram pre, .reveal div.flex-diagram pre code {
+.reveal div.flex pre, .reveal div.flex pre code {
   background-color: rgba(0,0,0,0);
 }
 
