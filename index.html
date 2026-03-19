@@ -98,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="quarto-automerge_files/libs/revealjs/dist/theme/quarto-5871dfe4f79ea2db2dec17b566709bb2.css">
+  <link rel="stylesheet" href="quarto-automerge_files/libs/revealjs/dist/theme/quarto-74d57172a046b7d01851ac410dbf9250.css">
   <link href="quarto-automerge_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="quarto-automerge_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="quarto-automerge_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -197,6 +197,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Workshop: Q&amp;A on Q+A</h1>
+  <p class="subtitle">follow along at <a href="https://cscheid.net/to/2026-03-quarto-automerge.html" class="uri">https://cscheid.net/to/2026-03-quarto-automerge.html</a></p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -259,8 +260,8 @@ Carlos Scheidegger, Elliot Evans
 <section id="what-do-we-want-automerge-for" class="slide level2">
 <h2>What do we want Automerge for?</h2>
 <ul>
-<li>our users fall back to Google Docs or Overleaf, then transfer over to Quarto when the collaboration “cools down”.</li>
-<li>We want multiplayer editing/commenting for prose, presentations.</li>
+<li>multiplayer editing/commenting for prose, presentations</li>
+<li>our users fall back to Google Docs or Overleaf, then move over to Quarto when the collaboration “cools down”</li>
 </ul>
 </section>
 <section id="who-do-we-want-automerge-for" class="slide level2">
@@ -276,19 +277,19 @@ Carlos Scheidegger, Elliot Evans
 </ul></li>
 </ul>
 </section>
-<section id="disclaimer-osures" class="slide level2">
-<h2>Discl{aimer, osure}s</h2>
+<section id="disclaimer-osures-12" class="slide level2">
+<h2>Discl{aimer, osure}s (1/2)</h2>
 <ul>
 <li>Quarto Hub is in very active development, everything about it might change</li>
-<li>See it live at <a href="https://cscheid.net/static/quarto-hub" class="uri">https://cscheid.net/static/quarto-hub</a>
+<li>See it live at <a href="https://cscheid.net/static/quarto-hub/" class="uri">https://cscheid.net/static/quarto-hub/</a>
 <ul>
 <li>github: <a href="https://github.com/quarto-dev/q2"><code>quarto-dev/q2</code></a></li>
 <li>don’t use it for anything important, please!</li>
 </ul></li>
 </ul>
 </section>
-<section id="its-2026" class="slide level2">
-<h2>It’s 2026</h2>
+<section id="disclaimer-osures-22" class="slide level2">
+<h2>Discl{aimer, osure}s (2/2)</h2>
 <ul>
 <li><p>We’ve been using LLMs extensively</p></li>
 <li><p>We think we’re doing it carefully and responsibly (and successfully!) but we understand there are smart folks who disagree</p></li>
@@ -300,8 +301,8 @@ Carlos Scheidegger, Elliot Evans
 <h1>Quarto + Automerge</h1>
 
 </section>
-<section id="project-automerge-document" class="slide level2">
-<h2>Project Automerge document</h2>
+<section id="project-representation" class="slide level2">
+<h2>Project representation</h2>
 <p>A Quarto project is a collection of .qmd files, metadata, and assets in a directory structure.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href=""></a><span class="fu">{</span></span>
 <span id="cb2-2"><a href=""></a>  <span class="dt">"files"</span><span class="fu">:</span> <span class="fu">{</span></span>
@@ -309,65 +310,70 @@ Carlos Scheidegger, Elliot Evans
 <span id="cb2-4"><a href=""></a>    <span class="dt">"index.qmd"</span><span class="fu">:</span> <span class="st">"49FzeY7oeoqyWtfwpoD6babnAyWa"</span></span>
 <span id="cb2-5"><a href=""></a>  <span class="fu">}</span></span>
 <span id="cb2-6"><a href=""></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<!--
-
-Why more than one Automerge document?
-
-- We speculated that this would make localized undo easier
-  -  (and believe we have evidence to support this claim)
-- We also wanted an escape valve for performance in large documents
-
--->
+<aside class="notes">
+<p>Why more than one Automerge document?</p>
+<ul>
+<li>We speculated that this would make localized undo easier
+<ul>
+<li>(and believe we have evidence to support this claim)</li>
+</ul></li>
+<li>We also wanted an escape valve for performance in large documents</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="document-automerge-documents" class="slide level2">
-<h2>Document Automerge documents</h2>
+<section id="document-representation" class="slide level2">
+<h2>Document representation</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource json number-lines code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href=""></a><span class="fu">{</span></span>
 <span id="cb3-2"><a href=""></a>  <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"Hello world.</span><span class="ch">\n</span><span class="st">"</span>   </span>
 <span id="cb3-3"><a href=""></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>This is where you might be thinking “uhhh, what?”</li>
-<li>Pandoc understands rich text, and so does Automerge, so why not represent that directly?
-<ul>
-<li>(If you know where to search, you’ll find a quarto Automerge experiment based around peritext from a long time ago!)</li>
-</ul></li>
+<li>Pandoc understands rich text, and so does Automerge, so why not represent that directly?</li>
 </ul>
-<!-- spans, we've seen / messed around with peritext, etc. -->
+<!--
+    - (We have a Quarto+Automerge experiment based around `peritext` from a long time ago!)
+-->
 </section>
 <section id="quartos-rendering-pipeline" class="slide level2">
 <h2>Quarto’s rendering pipeline</h2>
-<div style="display: flex; gap: 1rem">
-<div class="flex-diagram" style="background: rgb(197, 176, 176)">
+<div class="flex">
+<div style="background: rgb(197, 176, 176)">
 <p><code>.qmd</code></p>
 </div>
 <p>→</p>
-<div class="flex-diagram" style="background: rgb(220, 177, 97)">
+<div style="background: rgb(220, 177, 97)">
 <p>AST</p>
 </div>
 <p>→</p>
-<div class="flex-diagram" style="background: rgb(169, 213, 183)">
+<div style="background: rgb(169, 213, 183)">
 <p>HTML</p>
 </div>
 </div>
-<div style="display: flex; gap: 1rem; padding-top: .1em">
-<div class="flex-diagram" style="background: rgb(197, 176, 176)">
-<div style="font-size: .8em">
+<div class="flex">
+<div style="background: rgb(197, 176, 176); font-size: .8em">
 <pre><code>## Hello world
 
 [link](https://google.com)</code></pre>
 </div>
-</div>
 <p>→</p>
-<div class="flex-diagram" style="background: rgb(220, 177, 97)">
-<div style="font-size: .7em">
+<div style="background: rgb(220, 177, 97); font-size: .7em">
 <pre><code>{"pandoc-api-version":[1,23,1],"meta":{},"blocks":[{"t":"Header","c":[2,["hello-world",[],[]],[{"t":"Str",
 "c":"Hello"},{"t":"Space"},
 {"t":"Str",
 "c":"World"}]]},{"t":"Para","c":[{"t":"Link","c":[["",[],[]],[{"t":"Str","c":"link"}],["google",""]]}]}]}</code></pre>
 </div>
-</div>
 <p>→</p>
-<div class="flex-diagram" style="background: rgb(169, 213, 183)">
-<div style="font-size: .8em">
+<div style="background: rgb(169, 213, 183); font-size: .8em">
 <pre><code>&lt;h2&gt;Hello World&lt;h2&gt;
 
 &lt;p&gt;
@@ -375,33 +381,29 @@ Why more than one Automerge document?
 &lt;/p&gt;</code></pre>
 </div>
 </div>
-</div>
-<!-- consider showing an AST before proceeding somehow,
-or overview of quarto pipeline-->
 </section>
 <section id="the-essential-tension" class="slide level2">
 <h2>The essential tension</h2>
 <ul>
-<li>some players in the session will use rich text</li>
-<li>some players in the session will use plain text</li>
+<li><strong>rich text</strong>: some players in the session will use it</li>
+<li><strong>plain text</strong>: some players in the session will use it</li>
 </ul>
-<p><strong>something, somewhere must manage a bidi translation between text and AST</strong></p>
-<!-- No asts at rest -->
+<p>something, somewhere must manage a <strong>bidirectional mapping between text and AST</strong></p>
 </section>
 <section id="quarto-2" class="slide level2">
 <h2>Quarto 2</h2>
 <ul>
 <li>Rust rewrite (WASM)</li>
-<li>take over entire md→output pipeline</li>
-<li>new ideas:
+<li>take over md → HTML pipeline</li>
+<li>two new ideas:
 <ul>
-<li>track source locations and spans throughout</li>
-<li>embrace incremental writes</li>
+<li>we can track source spans through the entire translation pipeline</li>
+<li>tree diffing is efficient: embrace incremental writes</li>
 </ul></li>
 </ul>
 </section>
-<section id="case-study-quarto-execution-engines" class="slide level2">
-<h2>Case study: Quarto execution engines</h2>
+<section id="detour-quarto-execution-engines" class="slide level2">
+<h2>detour: Quarto execution engines</h2>
 <ul>
 <li>Quarto’s “execution engines” run (eg) Python or R code and produce output in Markdown.
 <ul>
@@ -413,22 +415,19 @@ or overview of quarto pipeline-->
 </ul></li>
 </ul>
 </section>
-<section id="maintaining-source-location" class="slide level2">
-<h2>Maintaining source location</h2>
+<section id="maintaining-source-locations" class="slide level2">
+<h2>Maintaining source locations</h2>
 <p>Imagine we want to walk to AST to find bad URLs in links. How should we report the error if the parser sees the engine Markdown?</p>
-<div style="display: flex; gap: 1rem">
-<div class="flex-diagram" style="background: rgb(197, 176, 176)">
-<div style="font-size: .5em">
+<div class="flex">
+<div class="flex" style="background: rgb(197, 176, 176); font-size: .5em">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb7-1"><a href=""></a><span class="in">```{python}</span></span>
 <span id="cb7-2"><a href=""></a><span class="bu">print</span>(<span class="st">"Hello, world: </span><span class="sc">%s</span><span class="st">"</span> <span class="op">%</span> (<span class="dv">1</span> <span class="op">+</span> <span class="dv">3</span>))</span>
 <span id="cb7-3"><a href=""></a><span class="in">```</span></span>
 <span id="cb7-4"><a href=""></a></span>
 <span id="cb7-5"><a href=""></a>a <span class="co">[</span><span class="ot">bad link</span><span class="co">](htp://ohno)</span>.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
 <p>→</p>
-<div class="flex-diagram" style="background: rgb(220, 177, 97)">
-<div style="font-size: .5em">
+<div class="flex" style="background: rgb(220, 177, 97); font-size: .5em">
 <pre><code>::: {#13a46395 .cell execution_count=1}
 ``` {.python .cell-code}
 print("Hello, world: %s" % (1 + 3))
@@ -439,16 +438,12 @@ print("Hello, world: %s" % (1 + 3))
 Hello, world: 4
 ```
 :::
-:::
 
 a [bad link](htp://ohno).</code></pre>
 </div>
-</div>
 <p>→</p>
-<div class="flex-diagram" style="background: rgb(169, 213, 183)">
-<div style="font-size: .5em">
+<div class="flex" style="background: rgb(169, 213, 183); font-size: .5em">
 <pre><code>{"pandoc-api-version":[1,23,1],"meta":{"echo":{"t":"MetaBool","c":true},"keep-md":{"t":"MetaBool","c":true}},"blocks":[{"t":"Div","c":[["13a46395",["cell"],[["execution_count","1"]]],[{"t":"CodeBlock","c":[["",["python","cell-code"],[]],"print(\"Hello, world: %s\" % (1 + 3))"]},{"t":"Div","c":[["",["cell-output","cell-output-stdout"],[]],[{"t":"CodeBlock","c":[["",[],[]],"Hello, world: 4"]}]]}]]},{"t":"Para","c":[{"t":"Str","c":"a"},{"t":"Space"},{"t":"Link","c":[["",[],[]],[{"t":"Str","c":"bad"},{"t":"Space"},{"t":"Str","c":"link"}],["htp://ohno",""]]},{"t":"Str","c":"."}]}]}</code></pre>
-</div>
 </div>
 </div>
 </section>
@@ -467,20 +462,26 @@ a [bad link](htp://ohno).</code></pre>
 </section>
 <section id="tree-reconciliation-22" class="slide level2">
 <h2>Tree reconciliation (2/2)</h2>
-<div style="display: flex; gap: 1rem">
-<div class="flex-diagram ast-1">
+<div class="flex">
+<div>
+<p>Input</p>
+<div class="ast-1">
 <pre><code>```python
 print("Hello, world")
 ```
 
 a [bad link](htp://ohno).</code></pre>
 </div>
-<div class="flex-diagram ast-2">
+</div>
+<div>
+<p>Engine output</p>
+<div class="ast-2">
 <pre><code>```
 Hello, world
 ```
 
 a [bad link](htp://ohno).</code></pre>
+</div>
 </div>
 </div>
 <p>Reconciled output:</p>
@@ -509,12 +510,12 @@ Hello, world
 <ul>
 <li>Localized changes in AST induce localized-in-string-span changes in text</li>
 </ul></li>
-<li>punchline for this crowd: <em>AST changes behave well in Automerge</em>.</li>
+<li>punchline: <em>AST changes behave well in Automerge</em>.</li>
 </ul>
 <!-- screenshot of dom inspector with data-loc -->
 </section>
-<section id="a-wasm-markdownhtml-pipeline" class="slide level2">
-<h2>A WASM Markdown→HTML pipeline</h2>
+<section id="a-wasm-markdown-html-pipeline" class="slide level2">
+<h2>A WASM Markdown → HTML pipeline</h2>
 <ul>
 <li>We’re rewriting the parts of Pandoc that are important for this pipeline in pure Rust</li>
 <li>it’s the <code>pampa</code> crate in <code>quarto-dev/q2</code></li>
@@ -534,14 +535,6 @@ Automerge string <-> qmd content <-> AST <-> rendered thing -->
 <ul>
 <li>TS pub-sub client over project and document changes</li>
 </ul></li>
-</ul>
-</section>
-<section id="current-features" class="slide level2">
-<h2>Current features</h2>
-<ul>
-<li>HTML doc preview</li>
-<li>Slides (driving this pres)</li>
-<li>replay of Automerge contents for long-range history</li>
 </ul>
 </section>
 <section id="ongoing-work" class="slide level2">
@@ -572,20 +565,20 @@ Automerge string <-> qmd content <-> AST <-> rendered thing -->
 </section>
 <section id="the-future-qa-ecosystem" class="slide level2">
 <h2>The future Q+A ecosystem</h2>
-<div style="display: flex; gap: 1rem">
-<div class="flex-diagram" style="background-color: #c88">
+<div class="flex">
+<div style="background-color: #c88">
 <p>Automerge</p>
 </div>
 <p>↔︎</p>
-<div class="flex-diagram" style="background-color: #c88">
+<div style="background-color: #c88">
 <p>Qmd</p>
 </div>
 <p>↔︎</p>
-<div class="flex-diagram" style="background-color: #c88">
+<div style="background-color: #c88">
 <p>AST</p>
 </div>
 <p>↔︎</p>
-<div class="flex-diagram" style="background-color: #c88">
+<div style="background-color: #c88">
 <p>Bidi</p>
 </div>
 </div>
@@ -597,14 +590,17 @@ Automerge string <-> qmd content <-> AST <-> rendered thing -->
 <h2><code>inkandswitch/pushwork</code></h2>
 <p>Should we change or ditch our Automerge schema entirely? We have time.</p>
 </section>
-<section id="automerge-authaccess-control" class="slide level2">
-<h2>Automerge auth/access control</h2>
+<section id="automerge-authacls-12" class="slide level2">
+<h2>Automerge auth/ACLs (1/2)</h2>
 <p>We are running a fork of samod that, at WebSocket upgrade time:</p>
 <ul>
 <li>Client: (Google) OIDC login returning JWT as HttpOnly cookie</li>
 <li>Server: JWT validation against cached provider keys</li>
 <li>Email and domain allowlists</li>
 </ul>
+</section>
+<section id="automerge-authacls-22" class="slide level2">
+<h2>Automerge auth/ACLs (2/2)</h2>
 <p>Automerge-repo protocol level:</p>
 <ul>
 <li>Ported <code>AccessPolicy</code> from Automerge-repo to samod</li>
@@ -613,22 +609,23 @@ Automerge string <-> qmd content <-> AST <-> rendered thing -->
 </section>
 <section id="thank-you" class="slide level2">
 <h2>Thank you!</h2>
+<p>(Personally speaking, Automerge is life-changing tech. I can’t wait to build more with it.)</p>
 <ul>
-<li>repo: <a href="https://github.com/quarto-dev/q2" class="uri">https://github.com/quarto-dev/q2</a></li>
-<li>best deployment for you: <a href="https://cscheid.net/static/quarto-hub/" class="uri">https://cscheid.net/static/quarto-hub/</a></li>
-<li>Our “official” deployment: <a href="https://quarto-hub.com" class="uri">https://quarto-hub.com</a>
-<ul>
-<li>let us know if you want access, it’s behind google auth</li>
-</ul></li>
-<li>Our team: Carlos Scheidegger, Gordon Woodhull, Elliot Evans, Christophe Dervieux, Charlie Gao, Charlotte Wickham, Mine Cetinkaya-Rundel, Andrew Holz</li>
+<li>Our team: Mine Çetinkaya-Rundel, Christophe Dervieux, Elliot Evans, Charlie Gao, Andrew Holz, Carlos Scheidegger, Charlotte Wickham, Gordon Woodhull</li>
 </ul>
-<p>Personally speaking, Automerge is life-changing tech. I can’t wait to build more with it.</p>
+</section>
+<section id="thank-you-1" class="slide level2">
+<h2>Thank you!</h2>
+<ul>
+<li><a href="https://github.com/quarto-dev/q2" class="uri">https://github.com/quarto-dev/q2</a> repo</li>
+<li><a href="https://cscheid.net/static/quarto-hub/" class="uri">https://cscheid.net/static/quarto-hub/</a> public prototype</li>
+</ul>
 
 </section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-
+<p><a href="https://cscheid.net/to/2026-03-quarto-automerge.html" class="uri">https://cscheid.net/to/2026-03-quarto-automerge.html</a></p>
 </div>
 </div></div>
 
